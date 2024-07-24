@@ -14,14 +14,14 @@ The F7B design is for the STM32F722RET (64 pins LQFP) chip.
 
 The design F7B has six variants, depending on the chosen port combinations.
 
-| Variant   | Servos | Motors | RPM   | TLM   | SBUS | DSM | Port A | Port B | Port C | Port E | Port G |
-| --------- | ------ | ------ | ----- | ----- | ---- | --- | ------ | ------ | ------ | ------ | ------ |
-| F7B1      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |  ✓     |  ✓     |        |        |
-| F7B2      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |        |        |        |  ✔     |
-| F7B3      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |     |  ✔ ᴿˣ  |  ✓     |  ✓     |  ✓     |        |
-| F7B4      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |     |  ✔ ᴿˣ  |        |        |  ✓     |  ✔     |
-| F7B5      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |     |  ✔ ᴿˣ  |  ✓     |  ✓     | IntRx  |        |
-| F7B6      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |     |  ✔ ᴿˣ  |        |        | IntRx  |  ✔     |
+| Variant   | Servos | Motors | RPM   | TLM   | AUX  | SBUS | DSM | Port A | Port B | Port C | Port E | Port G |
+| --------- | ------ | ------ | ----- | ----- | ---- | ---- | --- | ------ | ------ | ------ | ------ | ------ |
+| F7B1      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |  ✓     |  ✓     |        |        |
+| F7B2      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |        |        |        |  ✔     |
+| F7B3      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✔   |     |  ✔ ᴿˣ  |  ✓     |  ✓     |  ✓     |        |
+| F7B4      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✔   |     |  ✔ ᴿˣ  |        |        |  ✓     |  ✔     |
+| F7B5      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✔   |     |  ✔ ᴿˣ  |  ✓     |  ✓     | IntRx  |        |
+| F7B6      |  ✔     |  ✔     |   ✔   |   ✔   |  ✔   |  ✔   |     |  ✔ ᴿˣ  |        |        | IntRx  |  ✔     |
 
 Legend:
   ✔ = Mandatory Port,

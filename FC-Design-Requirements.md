@@ -7,8 +7,7 @@ __For an FC to be fully supported by Rotorflight-2 (RF2), it must follow one of 
 
 Rotorflight is based on Betaflight, and thus has the same basic requirements for the hardware.
 
-Please read the Design Guidelines for [Betaflight](https://github.com/betaflight/betaflight/blob/4.4.0-RC5/docs/Manufacturer%20Design%20Guidelines.md)
-first.
+Please read the Design Guidelines for [Betaflight](https://betaflight.com/docs/development/manufacturer/manufacturer-design-guidelines) first.
 
 
 ## Features

@@ -6,7 +6,7 @@ This repository contains hardware _reference designs_ for Rotorflight.
 
 There are many things to consider for a good design.
 
-Please read [this document](FC-Design-Requirements.md) first.
+Please read the [Generic Design Requirements for RF](FC-Design-Requirements.md) first.
 
 
 ## Reference Designs

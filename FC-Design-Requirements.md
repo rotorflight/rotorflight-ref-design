@@ -69,9 +69,12 @@ Larger flash chips - like W25N02 and W25N04 - will be supported in the future.
 
 A helicopter Flight Controller typically have two kinds of connectors. The servo and motors are connected to standard 0.1" pin headers, with 6V-8.4V power on the center pin. The power is usually provided by a BEC in the ESC. The other connectors are usually UARTs or multi-function connectors, with 5V power. Most commonly these are JST type connectors (XH,PA,GH,etc).
 
-It is also very useful to have the motor/servo headers on one end of the FC, and the other connectors on the other. This helps to remember that the other side has BEC (>6V) voltage, and the other side has 5V.
+It is also very useful to have the motor/servo headers on one end of the FC, and the other connectors on the other. This helps to remember that the JST plug side has the BEC voltage (>6V), while the other connectors are 5V.
 
-The standard "JR" style servo plugs are thicker than 0.1", usually 2.65mm. If more than 4 headers are located side by side, an extra gap of 0.5mm is required after every 4x3 header block. Otherwise the servo plugs will not fit in properly.
+The standard "JR" style servo plugs are thicker than 0.1", usually 2.75mm or more. The standard 2.54mm spacing is **NOT SUITABLE** for servo plugs.
+It is strongly suggested using 2.8mm spacing between the 3x1 header blocs.
+
+If more than 4 headers are located side by side, an extra gap of 0.5mm is required after every 4x3 header block. Otherwise the servo plugs do not fit in properly.
 
 ## Servo and Motor Outputs
 
@@ -82,7 +85,7 @@ Three servos are required for cyclic. The reference designs also have a pin for 
 The servo pins should be selected so that they are _on the same timer_.
 DMA is not required for servos, but the pins should have it available for future use.
 
-The servo header is a standard 0.1" pin header. It's common to have the cyclic servos side-by-side, as a 3x3 header block.
+The servo header is a standard 0.1" pin header. It's common to have the cyclic servos side-by-side.
 
 ### Tail servo / ESC
 
@@ -103,7 +106,7 @@ The RPM input requires a free timer. The timer can't be shared with other functi
 TIM2 and TIM5 can accommodate 4 RPM inputs, one on each channel. Other timers can accommodate only one RPM input.
 It is preferred to use TIM2 or TIM5 for RPM inputs.
 
-The RPM inputs require over-voltage protection diodes. Any pin header that provides the servo power (VX) and can act as an RPM input, must have the protection diode on the signal pin. This is due to a shortcoming in a commonly used HobbyWing RPM sensor.
+The RPM inputs require over-voltage protection diodes. Any pin header that provides the servo power (VX) and can act as an RPM input, must have the protection diode on the signal pin. This is due to the design in most RPM sensors, that have open-collector output and pull-up to VX.
 
 
 ## Extension Ports
@@ -115,13 +118,18 @@ The ports are primarily for UARTs, but because of the STM32 flexibility, they ca
 Possible functions are:
 
 - UART
+    - Serial Receiver
+    - External BlackBox
+    - External telemetry
+    - Bluetooth module
 - I2C
+    - Compass
 - RPM input
 - LED strip
-- Extra PWM (servo) output
-- Extra DShot (motor) output
+- Extra PWM (servo/ESC) output
+- Extra DShot (ESC) output
 - Camera Control
-- Voltage and current measurements (ADC)
+- Voltage and Current measurements (ADC)
 - RSSI input
 - External OSD
 - Video Tx Control (VTX)
@@ -133,12 +141,9 @@ The physical connector should be 4-pin JST-GH [GND, 5V, RX, TX], or other JST st
 
 It is preferable to have as many UARTs available as possible.
 
-
 ### Receiver
 
 Typically, any of the UART connectors can be used for connecting the receiver.
-
-If a dedicated receiver port is preferred, UART3/4 on PC10/PC11 is the best choice due to its flexibility.
 
 #### DSM
 
@@ -176,9 +181,9 @@ It can be provided on one of the multi-function header (shared with UART etc.)
 
 ### LEDs
 
-At least one power LED and one indicator LED (GPIO) are mandatory.
+Two indicator LEDs (green + red) are mandatory.
 
-Preferably, a two colour (green+red) indicator LED on two GPIO pins can be used.
+A separate power LED is optional.
 
 ### Boot/DFU button
 

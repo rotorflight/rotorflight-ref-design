@@ -98,7 +98,7 @@ The ESC telemetry pin can be an Rx on any UART.
 
 If a combined ESC telemetry and RPM input pin is preferred, then the pin should be selected so that it can act as a UART Rx, and a timer input, for example PA1 or PA3.
 
-The RPM input requires a free timer. The timer can't be shared with other functions. 
+The RPM input requires a free timer. The timer can't be shared with other functions.
 
 TIM2 and TIM5 can accommodate 4 RPM inputs, one on each channel. Other timers can accommodate only one RPM input.
 It is preferred to use TIM2 or TIM5 for RPM inputs.
@@ -225,11 +225,11 @@ It is still offering some over-current protection, while not interfering with th
 
 The easiest way to implement the protection is to use an ESD protection IC with integrated steering and TVS diodes:
 
-![ESD Array](https://github.com/rotorflight/rotorflight-old-wiki/blob/master/wiki/ESD-Array.jpeg)
+![ESD Array](images/ESD-Array.jpeg)
 
 Or using discrete components:
 
-![ESD Diodes](https://github.com/rotorflight/rotorflight-old-wiki/blob/master/wiki/ESD-Diodes.jpeg)
+![ESD Diodes](images/ESD-Diodes.jpeg)
 
 ## Miscellaneous Notes
 

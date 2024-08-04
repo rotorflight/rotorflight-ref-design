@@ -18,13 +18,13 @@ The design F7A has two variants, depending on the chosen port combinations.
 | --------- | ------ | ------ | ----- | ---- | --- | ------ | ------ | ------ | ------ | ------ | ------ |
 | F7A1      |  ✔     |  ✔     |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |  ✓     |  ✓     |  ✓     |  ✓     |        |
 | F7A2      |  ✔     |  ✔     |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |        |        |  ✓     |  ✓     |  ✔     |
-| F7A4      |  ✔     |  ✔     |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |  ✓     |  ✓     |  ✓     | IntRx  |        |
-| F7A5      |  ✔     |  ✔     |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |        |        |  ✓     | IntRx  |  ✔     |
+| F7A3      |  ✔     |  ✔     |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |  ✓     |  ✓     |  ✓     | IntRx  |        |
+| F7A4      |  ✔     |  ✔     |   ✔   |  ✔   |  ✓  |  ✔ ᴿˣ  |        |        |  ✓     | IntRx  |  ✔     |
 
 Legend:
   ✔ = Mandatory Port,
   ✓ = Optional Port,
-  ᴿˣ = Primary port for an external serial receiver (CRSF)
+  ᴿˣ = Primary port for an external serial receiver
 
 
 ## Ports
@@ -172,8 +172,8 @@ The connector type is 3-pin JST-ZH, with the following pinout:
 
 The signal pin is connected to PA10 on UART1.
 
-The DSM Port is sharing the RX pin with Port D. It is possible to implement
-either DSM Port, or Port D - or both.
+The DSM Port is an alternative to Port D. It is possible to implement
+either the DSM Port, or Port D - but not both.
 
 
 ## MCU Resource Allocation

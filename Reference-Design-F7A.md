@@ -12,7 +12,7 @@ The F7A design is for the STM32F722RET (64 pins LQFP) chip.
 
 ## Variants
 
-The design F7A has two variants, depending on the chosen port combinations.
+The design F7A has four variants, depending on the chosen port combinations.
 
 | Variant   | Servos | Motors | RPM   | SBUS | DSM | Port A | Port B | Port C | Port D | Port E | Port G |
 | --------- | ------ | ------ | ----- | ---- | --- | ------ | ------ | ------ | ------ | ------ | ------ |
@@ -130,9 +130,6 @@ Port D can be also used for Camera Control or LED Strip.
 
 Port E is a UART port. It shall be labelled with Ⓔ.
 
-If the FC is equipped with an integrated receiver, it shall be
-connected to this port.
-
 The external connector type is 4-pin JST-GH, with the following pinout:
 
 | Pin1 | Pin2 | Pin3 | Pin4 |
@@ -140,6 +137,9 @@ The external connector type is 4-pin JST-GH, with the following pinout:
 | TX   | RX   | 5V   | GND  |
 
 The signal pins are connected to PC12 (TX) and PD2 (RX) on UART5.
+
+If the FC is equipped with an integrated receiver, it shall be
+connected to this port.
 
 
 ### Expansion Port G
@@ -174,6 +174,15 @@ The signal pin is connected to PA10 on UART1.
 
 The DSM Port is an alternative to Port D. It is possible to implement
 either the DSM Port, or Port D - but not both.
+
+
+### Integrated Receiver
+
+The F7A3 and F7A4 designs support an integrated receiver.
+
+The receiver is connected PC12 (TX) and PD2 (RX) on Port E.
+
+An external Port E is not available on these designs.
 
 
 ## MCU Resource Allocation

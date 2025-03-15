@@ -1,4 +1,7 @@
-# Rotorflight Reference Design F7B
+# Rotorflight Reference Design F7B [deprecated]
+
+> [!WARNING]
+> This design is replaced by [Reference Design F7C](Reference-Design-F7C.md).
 
 Please read the page [Rotorflight FC Design Requirements](FC-Design-Requirements.md) first.
 It is explaining the generic requirements for all Rotorflight FC designs.
@@ -34,28 +37,21 @@ Legend:
 ### Servo and Motor Port
 
 The servos and motors are connected to standard 0.1" pin headers.
-The pin headers are organised as two blocks, of size 4x3 and 5x3 pins.
-
-The cyclic servos and the tail servo/ESC connect to the 4x3 block.
-
-The main ESC connects to the 5x3 block.
-
-A receiver can be connected to the 5x3 block, or to one of the JST-GH sockets.
+The pin headers can be organised as two or more blocks.
 
 All pin headers in these blocks have a common GND and a common VX (BEC power).
 
-| Label    | Pin1 | Pin2 | Pin3 | MCU Pin |
-| -------- | ---- | ---- | ---- | ------- |
-| S1       | GND  | VX   | PWM  | PB4     |
-| S2       | GND  | VX   | PWM  | PB5     |
-| S3       | GND  | VX   | PWM  | PB0     |
-| TAIL     | GND  | VX   | PWM  | PA15    |
-|          |      |      |      |         |
-| ESC      | GND  | VX   | SIG  | PA9     |
-| RPM      | GND  | VX   | SIG  | PA2     |
-| TLM      | GND  | VX   | SIG  | PA3     |
-| AUX      | GND  | VX   | SIG  | PB6     |
-| SBUS     | GND  | VX   | SIG  | PB7     |
+| Label    | Pin1 | Pin2 | Pin3 |
+| -------- | ---- | ---- | ---- |
+| S1       | GND  | VX   | PB4  |
+| S2       | GND  | VX   | PB5  |
+| S3       | GND  | VX   | PB0  |
+| TAIL     | GND  | VX   | PA15 |
+| ESC      | GND  | VX   | PA9  |
+| RPM      | GND  | VX   | PA2  |
+| TLM      | GND  | VX   | PA3  |
+| AUX      | GND  | VX   | PB6  |
+| SBUS     | GND  | VX   | PB7  |
 
 The ESC pin headers are designed to accommodate all variations of traditional and drone ESCs.
 The following combinations are possible with an ESC (electric).
@@ -81,9 +77,9 @@ The connector type is 4-pin JST-GH, with the following pinout:
 
 | Pin1 | Pin2 | Pin3 | Pin4 |
 | ---- | ---- | ---- | ---- |
-| TX   | RX   | 5V   | GND  |
+| PA0  | PA1  | 5V   | GND  |
 
-The signal pins are connected to PA0 (TX) and PA1 (RX) on UART4.
+The signal pins are connected by default to TX (PA0) and RX (PA1) on UART4.
 
 Port A can be also used as an RPM input port for two RPM signals,
 or two voltage inputs for the ADC.
@@ -97,9 +93,9 @@ The connector type is 4-pin JST-GH, with the following pinout:
 
 | Pin1 | Pin2 | Pin3 | Pin4 |
 | ---- | ---- | ---- | ---- |
-| TX   | RX   | 5V   | GND  |
+| PC6  | PC7  | 5V   | GND  |
 
-The signal pins are connected to PC6 (TX) and PC7 (RX) on UART6.
+The signal pins are connected by default to TX (PC6) and RX (PC7) on UART6.
 
 Port B can be also used for Camera Control, or for LED Strip.
 
@@ -110,11 +106,11 @@ Port C is a UART port or an I2C port. It shall be labelled with Ⓒ.
 
 The connector type is 4-pin JST-GH, with the following pinout:
 
-| Pin1   | Pin2   | Pin3 | Pin4 |
-| ------ | ------ | ---- | ---- |
-| TX/SCL | RX/SDA | 5V   | GND  |
+| Pin1  | Pin2  | Pin3 | Pin4 |
+| ----- | ----- | ---- | ---- |
+| PB10  | PB11  | 5V   | GND  |
 
-The signal pins are connected to PB10 (TX) and PB11 (RX) on UART3.
+The signal pins are connected by default to TX (PB10) and RX (PB11) on UART3.
 
 
 ### Expansion Port E
@@ -128,9 +124,9 @@ The external connector type is 4-pin JST-GH, with the following pinout:
 
 | Pin1 | Pin2 | Pin3 | Pin4 |
 | ---- | ---- | ---- | ---- |
-| TX   | RX   | 5V   | GND  |
+| PC12 | PD2  | 5V   | GND  |
 
-The signal pins are connected to PC12 (TX) and PD2 (RX) on UART5.
+The signal pins are connected by default to TX (PC12) and RX (PD2) on UART5.
 
 
 ### Expansion Port G
@@ -141,11 +137,12 @@ The connector type is 6-pin JST-GH, with the following pinout:
 
 | Pin1 | Pin2 | Pin3 | Pin4 | Pin5 | Pin6 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| 5V   | TX   | RX   | SCL  | SDA  | GND  |
+| 5V   | PC6  | PC7  | PB10 | PB11 | GND  |
 
 This socket is Pixhawk GPS compatible.
 
-The signal pins are connected to PB10 (SCL), PB11 (SDA) on I2C2; and PC6 (TX), PC7 (RX) on UART6.
+The signal pins are connected by default to TX (PC6), RX (PC7) on UART6;
+and SCL (PB10), SDA (PB11) on I2C2.
 
 Port G is an alternative to Ports B and C. Either Port G can be implemented,
 or Ports B and C - but not both.
@@ -159,91 +156,93 @@ The connector type is 3-pin JST-ZH, with the following pinout:
 
 | Pin1 | Pin2 | Pin3 |
 | ---- | ---- | ---- |
-| 3.3V | GND  | SIG  |
+| 3.3V | GND  | PD2  |
 
-The signal pin is connected to PD2 (RX) on UART5.
+The signal pin is connected to RX (PD2) on UART5.
 
 The DSM Port and Port E are exclusive. If the design has the Port E, it can't have
 the DSM port, and vice versa
 
 
-## MCU Resource Allocation
+## MCU Pin Allocation
 
-| Function      | PIN    | ALT1   | ALT2   | ALT3   | ALT4   | Notes     |
-| ------------- | ------ | ------ | ------ | ------ | ------ | ----------|
-| Servo1        | PB4    | T3Ch1  |
-| Servo2        | PB5    | T3Ch2  |
-| Servo3        | PB0    | T3Ch3  |
-| Servo4        | PB1    | T3Ch4  |||| Optional: Fourth cyclic servo¹
-| Rudder        | PA15   | T2Ch1  |||| Tail servo or motor |
-| Motor1        | PA9    | T1Ch2  |||| Main motor |
-|               |        |
-| UART1 Tx      | PB6    | TX1    | T4Ch2 ||| Optional: UART, LED strip, CC |
-| UART1 Rx      | PB7    | RX1    | T4Ch3 ||| Optional: UART, LED strip, CC |
-| UART2 Tx      | PA2    | TX2    | T5Ch3 | T9Ch1 | A2 | ESC Telem, RPM, CPPM, ADC, LED strip |
-| UART2 Rx      | PA3    | RX2    | T5Ch4 | T9Ch2 | A3 | ESC Telem, RPM, CPPM, ADC, LED strip |
-| UART3 Tx      | PB10   | TX3    | SCL2  | T2Ch3 |
-| UART3 Rx      | PB11   | RX3    | SDA2  | T2Ch4 |
-| UART4 Tx      | PA0    | TX4    | T5Ch1 | A0 |
-| UART4 Rx      | PA1    | RX4    | T5Ch2 | A1 |
-| UART5 Tx      | PC12   | TX5    |
-| UART5 Rx      | PD2    | RX5    |
-| UART6 Tx      | PC6    | TX6    | T8Ch1 ||| Optional: UART, LED strip, CC, GPS |
-| UART6 Rx      | PC7    | RX6    | T8Ch2 ||| Optional: UART, LED strip, CC, GPS |
-|               |        |
-| SCL1          | PB8    | SCL1   |||| Internal baro |
-| SDA1          | PB9    | SDA1   |||| Internal baro |
-|               |        |
-| SCL2          | PB10   | SCL2   | TX3 | T2Ch3 || Optional: External compass, UART3, PWM |
-| SDA2          | PB11   | SDA2   | RX3 | T2Ch4 || Optional: External compass, UART3, PWM |
-|               |        |
-| NSS           | PA4    | NSS1   |||| Gyro SPI NSS |
-| SCK           | PA5    | SCK1   |||| Gyro SPI SCK |
-| MISO          | PA6    | MISO1  |||| Gyro SPI MISO |
-| MOSI          | PA7    | MOSI1  |||| Gyro SPI MOSI |
-| GEXT          | PA8    | EXTI   |||| Gyro INT |
-|               |        |
-| NSS           | PB12   | NSS2   |||| Flash SPI NSS |
-| SCK           | PB13   | SCK2   |||| Flash SPI SCK |
-| MISO          | PB14   | MISO2  |||| Flash SPI MISO |
-| MOSI          | PB15   | MOSI2  |||| Flash SPI MOSI |
-|               |        |
-| ADC1          | PC0    | A10 |||| Vbat voltage sensor⁷ |
-| ADC2          | PC1    | A11 |||| Vx voltage sensor⁷ |
-| ADC3          | PC2    | A12 |||| 5V voltage sensor⁷ |
-| ADC4          | PC3    | A13 |||| Optional: extra ADC input |
-| ADC5          | PC4    | A14 |||| Optional: extra ADC input |
-|               |        |
-| BEEPER        | PC13   | GPIO |||| Optional: buzzer |
-| LED1          | PC14   | GPIO |||| Green status LED |
-| LED2          | PC15   | GPIO |||| Red status LED |
-|               |        |
-| USB DM        | PA11   | DM |||| USB data- |
-| USB DP        | PA12   | DP |||| USB data+ |
-|               |        |
-| SWDIO         | PA13   | SWDIO |||| Debugger test pad⁴ |
-| SWCLK         | PA14   | SWCLK |||| Debugger test pad⁴ |
-|               |        |
-| Free⁹         | PB2    |
-| Free⁹         | PB3    |
-| Free⁹         | PB7    |
-| Free⁹         | PC8    |
-| Free⁹         | PC9    |
+| Pin     | Function            | Usage            | Notes                           |
+| ------- | ------------------- | ---------------- | ------------------------------- |
+| PA0     | TX4 / T5CH1         | Port A           |                                 |
+| PA1     | RX4 / T5CH2         | Port A           |                                 |
+| PA2     | TX2 / T5CH3         | RPM              |                                 |
+| PA3     | RX2 / T5CH4         | TLM              |                                 |
+| PA4     | SPI1 NSS            | Gyro CS          |                                 |
+| PA5     | SPI1 SCK            | Gyro SCK         |                                 |
+| PA6     | SPI1 MISO           | Gyro SDO         |                                 |
+| PA7     | SPI1 MOSI           | Gyro SDI         |                                 |
+| PA8     | EXTI                | Gyro INT         |                                 |
+| PA9     | T1CH2               | ESC              |                                 |
+| PA10    |                     |                  | Free                            |
+| PA11    | USB DM              |                  |                                 |
+| PA12    | USB DP              |                  |                                 |
+| PA13    | SWD                 |                  | Note¹                           |
+| PA14    | SWD                 |                  |                                 |
+| PA15    | T2CH1               | TAIL             |                                 |
+|||||
+| PB0     | T3CH3               | Servo 3          |                                 |
+| PB1     | T3CH4               | Servo 4          | Optional²                       |
+| PB2     |                     |                  | Free                            |
+| PB3     |                     |                  | Free                            |
+| PB4     | T3CH1               | Servo 1          |                                 |
+| PB5     | T3CH2               | Servo 2          |                                 |
+| PB6     | T4CH1 / TX1         | AUX              |                                 |
+| PB7     | T4CH2 / RX1         | SBUS             |                                 |
+| PB8     | SCL1                | Baro             |                                 |
+| PB9     | SDA1                | Baro             |                                 |
+| PB10    | TX3 / SCL2 / T2CH3  | Port C           |                                 |
+| PB11    | RX3 / SDA2 / T2CH4  | Port C           |                                 |
+| PB12    | SPI2 NSS            | Flash            |                                 |
+| PB13    | SPI2 SCK            | Flash            |                                 |
+| PB14    | SPI2 MISO           | Flash            |                                 |
+| PB15    | SPI2 MOSI           | Flash            |                                 |
+|||||
+| PC0     | ADC10               | Vbat             |                                 |
+| PC1     | ADC11               | Vbec (VX)        |                                 |
+| PC2     | ADC12               | Vbus (5V)        |                                 |
+| PC3     | ADC13               |                  | Free                            |
+| PC4     | ADC14 / EXTI        |                  | Free³                           |
+| PC6     | TX6 / T8CH1         | Port B           |                                 |
+| PC7     | RX6 / T8CH2         | Port B           |                                 |
+| PC8     |                     |                  | Free                            |
+| PC9     |                     |                  | Free                            |
+| PC10    |                     |                  | Free                            |
+| PC11    |                     |                  | Free                            |
+| PC12    | TX5                 | Port E           |                                 |
+| PC13    | GPIO                | Buzzer           | Optional                        |
+| PC14    | GPIO                | LED Green        |                                 |
+| PC15    | GPIO                | LED Red          |                                 |
+|||||
+| PD2     | RX5                 | Port E           |                                 |
 
-¹ The optional servo may have a solder pad on the PCB.
 
-² ~~Not used~~
+¹ For easy debugging, GND,3V3,SWDIO,SWCLK solder pads (test points) should be available on the PCB.
 
-³ ~~Not used~~
+² The optional servo may have a solder pad on the PCB.
 
-⁴ For easy debugging, GND,3V3,SWDIO,SWCLK solder pads (test points) should be available on the PCB.
+³ Suitable as EXTI because the pin is close to the other gyro pins
 
-⁵ ~~Not used~~
 
-⁶ ~~Not used~~
+## ADC Inputs
 
-⁷ A voltage divider and a filter cap is needed on each ADC input. The cutoff frequency for the input filter should be ~ 25Hz.
+There are total six ADC inputs available. The first three are reserved for the allocated
+functions, while the rest are optional or free for other use.
 
-⁸ ~~Not used~~
+The ADC inputs are limited to 3.3V, and often require a voltage divider.
 
-⁹ If space permits, all unused/free pins may have solder pads on the PCB.
+The resistors should have at least 1% precision.
+
+Example divider values can be found below.
+
+| Usage    |  Vmax    | Vreso    | R1       | R2         |   C         |
+| -------- | -------- | -------- |--------- | ---------- | ----------- |
+| Bat 16S  | 80V      | 20mV     | 243k     | 10k2       | 560nF       |
+| Bat 8S   | 40V      | 10mV     | 162k     | 14k2       | 390nF       |
+| BEC      | 20V      | 5mV      | 102k     | 19k6       | 270nF       |
+| 5V       | 10V      | 2.5mV    | 57k6     | 27k4       | 270nF       |
+

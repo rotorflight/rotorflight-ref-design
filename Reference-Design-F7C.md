@@ -216,9 +216,9 @@ the DSM port, and vice versa
 | PC10    | GPIO                | LED Green        |                                 |
 | PC11    | GPIO                | LED Red          |                                 |
 | PC12    | TX5                 | Port E           |                                 |
-| PC13    | GPIO                |                  | Free                            |
-| PC14    | GPIO                |                  | Free                            |
-| PC15    | GPIO                |                  | Free                            |
+| PC13    | GPIO                |                  | Free⁵                           |
+| PC14    | GPIO                |                  | Free⁵                           |
+| PC15    | GPIO                |                  | Free⁵                           |
 |||||
 | PD2     | RX5                 | Port E           |                                 |
 
@@ -230,6 +230,8 @@ the DSM port, and vice versa
 ³ Accelerometer CS is needed with chips like BMI088
 
 ⁴ Accelerometer INT is needed with chips like BMI088
+
+⁵ The current on this pin must not exceed 3mA
 
 
 ## ADC Inputs

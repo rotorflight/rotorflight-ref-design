@@ -236,9 +236,9 @@ An external Port E is not available on these designs.
 | PC10    |                     |                  | Free                            |
 | PC11    |                     |                  | Free                            |
 | PC12    | TX5                 | Port E           |                                 |
-| PC13    | GPIO                | Buzzer           | Optional                        |
-| PC14    | GPIO                | LED Green        |                                 |
-| PC15    | GPIO                | LED Red          |                                 |
+| PC13    | GPIO                | Buzzer⁴          | Optional                        |
+| PC14    | GPIO                | LED Green⁴       |                                 |
+| PC15    | GPIO                | LED Red⁴         |                                 |
 |||||
 | PD2     | RX5                 | Port E           |                                 |
 
@@ -248,6 +248,8 @@ An external Port E is not available on these designs.
 ² The optional servo may have a solder pad on the PCB.
 
 ³ Suitable as EXTI because the pin is close to the other gyro pins
+
+⁴ The current on this pin must not exceed 3mA
 
 
 ## ADC Inputs
